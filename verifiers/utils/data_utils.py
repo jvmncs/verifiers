@@ -115,7 +115,8 @@ def get_preprocess_fn(name: str) -> Callable[[Dict], Dict]:
         def preprocess_mmlu(x: Dict[str, Any]) -> Dict[str, Any]:
             options = x["choices"]
             answer = x["answer"]
-            question = f"Question: {x["question"]}\n"
+            q = x["question"]
+            question = f"Question: {q}\n"
             for i, option in enumerate(options):
                 question += f"\n{mmlu_map[i]}: {option}"
             return {
@@ -129,7 +130,8 @@ def get_preprocess_fn(name: str) -> Callable[[Dict], Dict]:
         def preprocess_mmlu(x: Dict[str, Any]) -> Dict[str, Any]:
             options = x["options"]
             answer = x["answer"]
-            question = f"Question: {x["question"]}\n"
+            q = x["question"]
+            question = f"Question: {q}\n"
             for i, option in enumerate(options):
                 question += f"\n{mmlu_map[i]}: {option}"
             return {
